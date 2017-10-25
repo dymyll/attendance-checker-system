@@ -20,12 +20,12 @@ var studentSchema = new mongoose.Schema({
 var Student = mongoose.model('Student', studentSchema);
 
 
-router.get('/addrandomstudent', function(req, res, next) {
+router.get('/add/:firstName/:lastName', function(req, res, next) {
     
     var rand = new Student(
         { 
-            firstName: 'Dymyll',
-            lastName: 'Jones',
+            firstName: req.params.firstName,
+            lastName: req.params.lastName,
             buffID: '1254547'
             
         }
@@ -33,8 +33,11 @@ router.get('/addrandomstudent', function(req, res, next) {
     rand.save(function (err) {
       if (err) {
         console.log(err);
+        res.send('There was an error');
       } else {
-        console.log('The student is saved in the db');
+         var message = req.params.firstName + " " + req.params.lastName + ' is saved in the db';
+        console.log(message);
+        res.send(message);
       }
     });
 });

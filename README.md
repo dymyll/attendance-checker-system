@@ -7,4 +7,5 @@ A list of things happening in this app:
 
 ## Tutorial for installing MongoDB to c9
 
- * Install MongoDB on c9 [here](https://community.c9.io/t/updating-mongodb/3914)
+ *Installing MongoDB for c9 [update](https://community.c9.io/t/updating-mongodb/3914)
+ * Updating MongoDB on c9 to 3.x [here](https://community.c9.io/t/setting-up-mongodb/1717)
