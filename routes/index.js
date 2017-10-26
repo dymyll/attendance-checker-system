@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 
-var connection = "mongodb://<dymyll>:<Prince2410>@ds229295.mlab.com:29295/student";
-mongoose.connect('mongodb://localhost/test', { useMongoClient: true });
+var connection = "mongodb://dymyll:Prince2410@ds229295.mlab.com:29295/student";
+mongoose.connect(connection, { useMongoClient: true });
 
 mongoose.Promise = global.Promise;
 
@@ -16,7 +16,35 @@ var studentSchema = new mongoose.Schema({
    buffID: String
 });
 
+var schoolSchema = new mongoose.Schema({
+    schoolName: String,
+    schoolID: String,
+    
+});
 
+var classSchema = new mongoose.Schema({
+    className: String,
+    classID: String,
+    ProfessorName: String,
+    studentRoster: Array,
+    classMeetings:Array
+    
+});
+
+var AttendanceSchema = new mongoose.Schema({
+    classID: String,
+    schoolID: String,
+    studentsEnrolled: classSchema.studentRoster,
+    studentsAtteneded:Array(classSchema.studentRoster),
+    currentDay: Date,
+    attendanceAvg: String //classSchema.studentRoster/classSchema.classMeetings
+    
+});
+
+
+
+
+//The string will be pluralised in mlabs example 'Student' willl be 'Students'
 var Student = mongoose.model('Student', studentSchema);
 
 
